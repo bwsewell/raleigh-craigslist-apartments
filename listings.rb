@@ -7,7 +7,7 @@ before do
 end
 
 get '/' do
-  db = Sequel.connect(ENV['DATABASE_URL'])
+  db = Sequel.connect(ENV['HEROKU_POSTGRESQL_CRIMSON_URL'])
 
   @listings = db[:listings]
   @ranges = []

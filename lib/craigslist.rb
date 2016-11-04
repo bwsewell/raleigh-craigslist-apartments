@@ -1,6 +1,6 @@
 module Craigslist
   # Connect to our PostgreSQL database
-  DB = Sequel.connect(ENV['DATABASE_URL'])
+  DB = Sequel.connect(ENV['HEROKU_POSTGRESQL_CRIMSON_URL'])
 
   # Drop the listings table for simplicity if it exists when script runs
   DB.drop_table :listings rescue puts "No listings table to drop"

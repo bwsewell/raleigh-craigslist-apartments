@@ -8,7 +8,7 @@ bundle install
 ```
 
 ## Database
-If you have a Postgres DB running locally, you can replace the two references to `ENV['DATABASE_URL']` with your credentials: `postgres://user:password@host:port/database_name`. I'm using the `sequel` gem, so you can actually use any relational database you want, but you may have to change some of the code.
+If you have a Postgres DB running locally, you can replace the two references to `ENV['HEROKU_POSTGRESQL_CRIMSON_URL']` with your credentials: `postgres://user:password@host:port/database_name`. I'm using the `sequel` gem, so you can actually use any relational database you want, but you may have to change some of the code.
 
 ## Running the Scraper
 Run the following command in the root of the project
