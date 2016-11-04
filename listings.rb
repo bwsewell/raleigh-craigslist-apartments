@@ -12,6 +12,7 @@ get '/' do
   @max_price = 5000
   price = 0
   interval = 200
+
   begin
     @ranges << {
       min: price,
