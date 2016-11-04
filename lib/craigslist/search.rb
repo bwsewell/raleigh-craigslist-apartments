@@ -12,7 +12,7 @@ module Craigslist
 
       until results.empty?
         results.each do |result|
-          Listing.scrape(BASE_URL + result["href"]);
+          Listing.scrape(BASE_URL + result["href"])
         end
 
         puts "Page #{offset} DONE"
