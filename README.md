@@ -1,4 +1,12 @@
 # Running locally
+## Getting started
+
+```bash
+git clone git@github.com:bwsewell/raleigh-craigslist-apartments.git
+cd raleigh-craigslist-apartments
+bundle install
+```
+
 ## Database
 If you have a Postgres DB running locally, you can replace the two references to `ENV['DATABASE_URL']` with your credentials: `postgres://user:password@host:port/database_name`. I'm using the `sequel` gem, so you can actually use any relational database you want, but you may have to change some of the code.
 
