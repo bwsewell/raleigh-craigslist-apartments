@@ -1,0 +1,26 @@
+{
+  "name": "Raleigh Craigslist Apartments",
+  "description": "Display a list of price ranges and how many craigslist listings in the Apartments/Housing Rentals category of RDU there are for each.",
+  "repository": "https://github.com/bwsewell/raleigh-craigslist-apartments",
+  "scripts": {
+    "postdeploy": "bin/scrape_listings"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+    },
+    {
+      "plan": "papertrail:choklad",
+    },
+    {
+      "plan": "scheduler:standard",
+    }
+  ]
+}
