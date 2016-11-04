@@ -10,10 +10,10 @@ module Craigslist
   # Connect to our PostgreSQL database
   DB = Sequel.connect(ENV['DATABASE_URL'])
 
-  # Drop the table for simplicity if it exists when script runs
+  # Drop the listings table for simplicity if it exists when script runs
   DB.drop_table :listings rescue puts "No listings table to drop"
 
-  # Create the table again
+  # Create the listings table
   DB.create_table :listings do
     primary_key :id
     String :title
@@ -23,7 +23,6 @@ module Craigslist
   end
 
   LISTINGS = DB[:listings]
-
   BASE_URL = "http://raleigh.craigslist.org"
 
   module Listing

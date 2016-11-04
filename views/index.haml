@@ -1,0 +1,56 @@
+%h1 Raleigh Apartments/Housing Rentals on Craigslist
+
+%ul#ranges
+  %li
+    - free_listings = @listings.where(price: 0)
+    .price FREE
+    .count
+      = free_listings.count
+      .hist-value{ style: "width: #{(free_listings.count.to_f / @total_listings.to_f) * 100}%;" }
+  - @ranges.each do |r|
+    - next if r[:count] == 0
+    %li
+      .price= "$#{r[:min] + 1} - $#{r[:max]}"
+      .count
+        = r[:count]
+        .hist-value{ style: "width: #{(r[:count].to_f / @total_listings.to_f) * 100}%;" }
+  %li
+    - overpriced_listings = @listings.where('price > ?', @max_price)
+    .price > $#{@max_price}
+    .count
+      = overpriced_listings.count
+      .hist-value{ style: "width: #{(overpriced_listings.count.to_f / @total_listings.to_f) * 100}%;" }
+
+:sass
+  #ranges
+    display: block
+    margin: 0 auto
+    padding: 0
+
+    li
+      display: block
+      list-style: none
+      font-size: 16px
+      line-height: 24px
+      margin: 4px 0
+
+      &:nth-child(even)
+        background: #EFEFEF
+
+      .price, .count
+        display: inline-block
+      .price
+        width: 10%
+      .count
+        position: relative
+        width: 70%
+
+        .hist-value
+          position: absolute
+          left: 0
+          top: 0
+          bottom: 0
+          background: rgba(purple, 0.3)
+          display: block
+
+
