@@ -5,20 +5,20 @@
     - free_listings = @listings.where(price: 0)
     .price FREE
     .count
-      %a{ href: "http://raleigh.craigslist.org/search/apa?max_price=0&availabilityMode=0" }= free_listings.count
+      = free_listings.count
       .hist-value{ style: "width: #{(free_listings.count.to_f / @total_listings.to_f) * 100}%;" }
   - @ranges.each do |r|
     - next if r[:count] == 0
     %li
       .price= "$#{r[:min] + 1} - $#{r[:max]}"
       .count
-        %a{ href: "http://raleigh.craigslist.org/search/apa?min_price=#{r[:min] + 1}&max_price=#{r[:max]}&availabilityMode=0" }= r[:count]
+        = r[:count]
         .hist-value{ style: "width: #{(r[:count].to_f / @total_listings.to_f) * 100}%;" }
   %li
     - overpriced_listings = @listings.where('price > ?', @max_price)
     .price > $#{@max_price}
     .count
-      %a{ href: "http://raleigh.craigslist.org/search/apa?min_price=#{@max_price}&availabilityMode=0" }= overpriced_listings.count
+      = overpriced_listings.count
       .hist-value{ style: "width: #{(overpriced_listings.count.to_f / @total_listings.to_f) * 100}%;" }
 
 :sass

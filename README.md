@@ -13,7 +13,14 @@ bin/scrape_listings
 ```
 
 # Quirks
+## Listing Scraper Job
 The jobs that runs intermittently to scrape all listings drops the listings table at the beginning instead of trying to clean out expired listings at the end, or updating listings that already exist. I currently have this job set to run every hour, therefore I've set the `Cache-Control` header in Sinatra to expire each hour to reduce the possibility of a returning user seeing an incomplete representation of the active listings. It's not perfect, but it works.
+
+## Limit 2500
+Looks like Craigslist limits all results for any query to the latest 2500 listings. Because of this, if you visit a page with query parameters for a particular price range, it probably doesn't match the results for that price range if you just scraped all results without any filters.
+
+Examples:
+[http://raleigh.craigslist.org/search/apa](http://raleigh.craigslist.org/search/apa) has 2500 results, and if you limit the price range using their url query parameters to listings between $801-$1,000 you'll also get 2500 results (usually) [http://raleigh.craigslist.org/search/apa?min_price=801&max_price=1000&availabilityMode=0](http://raleigh.craigslist.org/search/apa?min_price=801&max_price=1000&availabilityMode=0)
 
 # Notes
 Craigslist utilizes a JSON API to populate their map on a search results page:
