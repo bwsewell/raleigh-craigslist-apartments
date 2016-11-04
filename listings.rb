@@ -7,9 +7,9 @@ before do
 end
 
 get '/' do
-  db = Sequel.connect(ENV['HEROKU_POSTGRESQL_CRIMSON_URL'])
+  @db ||= Sequel.connect(ENV['HEROKU_POSTGRESQL_CRIMSON_URL'], :max_connections => 20)
 
-  @listings = db[:listings]
+  @listings = @db[:listings]
   @ranges = []
   @total_listings = @listings.count
 
