@@ -10,6 +10,7 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    sass (3.4.22)
     sequel (4.40.0)
     sinatra (1.4.7)
       rack (~> 1.5)
@@ -24,6 +25,7 @@ DEPENDENCIES
   haml
   nokogiri
   pg
+  sass
   sequel
   sinatra
 
