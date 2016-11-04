@@ -26,7 +26,7 @@ module Craigslist
         title: listing_doc.css(TITLE_SELECTOR).text,
         price: listing_doc.css(PRICE_SELECTOR).text,
         description: description.inner_html,
-        date: listing_doc.css(DATE_SELECTOR)["datetime"],
+        date: listing_doc.css(DATE_SELECTOR).first["datetime"],
       }
 
       puts listing.inspect
