@@ -2,6 +2,10 @@ require 'sinatra'
 require 'sequel'
 require 'pg'
 
+before do
+  cache_control :public, :max_age => 3600
+end
+
 get '/' do
   db = Sequel.connect(ENV['DATABASE_URL'])
 
