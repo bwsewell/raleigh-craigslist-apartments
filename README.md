@@ -1,5 +1,25 @@
 # Running locally
-If you have a Postgres DB running locally, you can replace the two references to `ENV['DATABASE_URL']` with your credentials: `postgres://user:password@host:port/database_name`
+## Database
+If you have a Postgres DB running locally, you can replace the two references to `ENV['DATABASE_URL']` with your credentials: `postgres://user:password@host:port/database_name`. I'm using the `sequel` gem, so you can actually use any relational database you want, but you may have to change some of the code.
+
+## Running the Scraper
+Run the following command in the root of the project
+
+```bash
+ruby bin/scrape_listings
+```
+
+It might take a while locally.
+
+## Viewing the Front-end
+
+Run the following command in the root of the project
+
+```bash
+ruby listings.rb
+```
+
+This will start a thin web server for Sinatra. You should be able to access the page at `localhost:4567`
 
 # Deploying on Heroku
 You can also deploy this repo to Heroku using the button below:
